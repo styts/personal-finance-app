@@ -12,6 +12,9 @@
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 
+    <!-- Application CSS -->
+    <link href="{{ url_for('static', filename='css/app.css') }}" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <link href="justified-nav.css" rel="stylesheet">
   </head>
@@ -24,7 +27,12 @@
       <div class="jumbotron">
         <h1>Personal Finance App</h1>
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
+        <!--<p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>-->
+        <p>
+        <span class="btn btn-default btn-lg btn-success btn-file">
+            Upload CSV <input type="file">
+        </span>
+        </p>
       </div>
 
       <!-- Example row of columns -->
