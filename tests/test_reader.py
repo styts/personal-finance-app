@@ -1,4 +1,4 @@
-from logic import guess_format, _guess_date_format, read_dicts_from_filename
+from reader import guess_format, _guess_date_format, read_dicts_from_filename
 import pytest
 
 file_names = [
