@@ -137,15 +137,12 @@ def _dict_from_format_and_line(line, fmt):
 
 def sum_labels(labels, dict_iter):
     results = defaultdict(list)
-
-    pass
     for d in dict_iter:
         if not len(d['labels']):
             continue
-        print d
+        # print d
         for l in labels:
             results[l].append(d['amount'])
-
     return results
 
 

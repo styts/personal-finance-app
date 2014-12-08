@@ -1,63 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+{% extends "base.html" %}
+{% block content %}
+<!-- Jumbotron -->
+<div class="jumbotron">
+<h1>Personal Finance App</h1>
+<p class="lead">Gain insight into your spendings.</p>
+<!--<p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>-->
+<p>
+<span class="btn btn-default btn-lg btn-success btn-file">
+    Upload CSV <input type="file">
+</span>
+</p>
+</div>
 
-    <title>Personal Finance App</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <!-- Application CSS -->
-    <link href="{{ url_for('static', filename='css/app.css') }}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="justified-nav.css" rel="stylesheet">
-  </head>
-
-  <body>
-
-    <div class="container">
-
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-        <h1>Personal Finance App</h1>
-        <p class="lead">Gain insight into your spendings.</p>
-        <!--<p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>-->
-        <p>
-        <span class="btn btn-default btn-lg btn-success btn-file">
-            Upload CSV <input type="file">
-        </span>
-        </p>
-      </div>
-
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-lg-4">
-          <h2>Obtain CSV</h2>
-          <p>Log in into your bank portal and export a CSV of of transaction form one of your accounts.</p>
-        </div>
-        <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-lg-4">
-          <h2>Secure your financial future</h2>
-          <p>Always know how much and on what you spent in the past and take control of your budget.</p>
-        </div>
-      </div>
-
-      <!-- Site footer -->
-      <footer class="footer">
-        <p>&copy;  2014</p>
-      </footer>
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
+<!-- Example row of columns -->
+<div class="row">
+<div class="col-lg-4">
+    <h2>Obtain CSV</h2>
+    <p>Log in into your bank portal and export a CSV of of transaction form one of your accounts.</p>
+</div>
+<div class="col-lg-4">
+    <h2>Heading</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+    <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+</div>
+<div class="col-lg-4">
+    <h2>Secure your financial future</h2>
+    <p>Always know how much and on what you spent in the past and take control of your budget.</p>
+</div>
+</div>
+{% endblock %}

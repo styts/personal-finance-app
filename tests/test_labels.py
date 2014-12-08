@@ -1,14 +1,12 @@
 from __future__ import print_function
 from reader import read_dicts_from_filename
+from labels import labels
+
 
 file_names = [
     'csv/bankaustria.csv',
     'csv/raiffeisen.csv'
 ]
-
-labels = {
-    'Groceries': ['SPAR DANKT', 'HOFER DANKT', 'BILLA DANKT'],
-}
 
 
 def test_logic():

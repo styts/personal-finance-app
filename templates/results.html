@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Results{% endblock %}
+{% block head %}
+    {{ super() }}
+    <!-- helps draw the graphs --!>
+    <script src="{{ url_for('static', filename='js/Chart.js') }}"></script>
+{% endblock %}
+{% block content %}
+    <h1>Results</h1>
+    <canvas id="myChart"></canvas>
+    <script>
+    (function() {
+        var data = {{ json_data|tojson }};
+        var ctx = document.getElementById("myChart").getContext("2d");
+        var options = {
+            animation: false,
+            responsive: true,
+            //bezierCurve: false,
+        };
+        var myLineChart = new Chart(ctx).Line(data, options);
+    })();
+    </script>
+{% endblock %}
