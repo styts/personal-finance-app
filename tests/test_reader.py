@@ -1,4 +1,4 @@
-from reader import guess_format, _guess_date_format, read_dicts_from_filename
+from reader import guess_format, _guess_date_format
 import pytest
 
 file_names = [
@@ -36,10 +36,3 @@ def test_guess_date_format():
     assert _guess_date_format(['01.10.2014', '30.09.2014']) == "%d.%m.%Y"
     assert _guess_date_format(['10-01-2014', '09-30-2014']) == "%m-%d-%Y"
     assert _guess_date_format(['10/01/2014', '09/30/2014']) == "%m/%d/%Y"
-
-
-def test_logic():
-    for filename in file_names:
-        for d in read_dicts_from_filename(filename):
-            print d
-        print "============"

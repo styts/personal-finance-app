@@ -4,6 +4,8 @@ import logging
 from datetime import datetime
 import re
 from decimal import Decimal
+from itertools import groupby
+from collections import defaultdict
 
 
 potential_formats = [
@@ -114,17 +116,50 @@ def guess_format(csv_filename):
     return frmt
 
 
-def read_dicts_from_filename(filename):
-    def _dict_from_format_and_line(line, fmt):
-        date_origin = line[fmt['date']]
-        dat = datetime.strptime(date_origin, fmt['date_format']).date()
-        return {
-            'amount': Decimal(line[fmt['amount']]),
-            'date': dat,
-            'month': dat.month,
-            'comments': " ".join(line[n] for n in fmt['comments']),
-        }
+def assign_labels(labels, d):
+    for label, label_markers in labels.iteritems():
+        for m in label_markers:
+            if m in d['comments']:
+                d['labels'].append(label)
+    return d
+
+
+def _dict_from_format_and_line(line, fmt):
+    date_origin = line[fmt['date']]
+    dat = datetime.strptime(date_origin, fmt['date_format']).date()
+    return {
+        'amount': Decimal(line[fmt['amount']]),
+        'date': dat,
+        'comments': " ".join(line[n] for n in fmt['comments']),
+        'labels': [],
+    }
+
+
+def sum_labels(labels, dict_iter):
+    results = defaultdict(list)
+
+    pass
+    for d in dict_iter:
+        if not len(d['labels']):
+            continue
+        print d
+        for l in labels:
+            results[l].append(d['amount'])
+
+    return results
+
+
+def group_by_month(iter_, labels):
+    for month_tuple, dict_iter in groupby(iter_, key=lambda d: (d['date'].year, d['date'].month)):
+        yield (month_tuple, sum_labels(labels, dict_iter), dict_iter)
+
+
+def read_dicts_from_filename(filename, labels):
     fmt = guess_format(filename)
+    results = []
     for line in get_rows(filename):
         d = _dict_from_format_and_line(line, fmt)
-        yield d
+        d = assign_labels(labels, d)
+        results.append(d)
+    results = sorted(results, key=lambda x: x['date'])
+    return group_by_month(results, labels)
